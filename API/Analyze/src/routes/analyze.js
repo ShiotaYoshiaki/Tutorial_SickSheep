@@ -1,7 +1,11 @@
 import service from '../services/analyze';
 
-export default (req, res) => {
-    const { params } = req.params;
-    const result = service(params);
-    res.json(result);
+export default async (req, res) => {
+    try {
+        const { params } = req.params;
+        const result = await service(params);
+        res.json(result);
+    } catch (e) {
+        console.log('-------------e'); console.log(e);
+    }
 }
